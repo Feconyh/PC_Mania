@@ -4,43 +4,47 @@ public class Computador {
     private String marca;
     private float preco;
 
-    // Promoção 1
-    SistemaOperacional so1 = new SistemaOperacional("macOS Sequoia", 64);
+    // Composição
+    private SistemaOperacional so;
+    private HardwareBasico processador;
+    private HardwareBasico ram;
+    private HardwareBasico hd;
 
-    HardwareBasico hbp1 = new HardwareBasico("Processador Core i5",2200);
-    HardwareBasico hbram1 = new HardwareBasico("Memória RAM",8);
-    HardwareBasico hbhd1 = new HardwareBasico("HD",500);
-
-    MemoriaUSB musb1 = new MemoriaUSB("Pen-drive",16);
-
-    // Promoção 2
-    SistemaOperacional so2 = new SistemaOperacional("Windows 8", 64);
-
-    HardwareBasico hbp2 = new HardwareBasico("Processador Core i7",3370);
-    HardwareBasico hbram2 = new HardwareBasico("Memória RAM",16);
-    HardwareBasico hbhd2 = new HardwareBasico("HD",1000);
-
-    MemoriaUSB musb2 = new MemoriaUSB("Pen-drive",32);
-
-    // Promoção 3
-    SistemaOperacional so3 = new SistemaOperacional("Windows 10", 64);
-
-    HardwareBasico hbp3 = new HardwareBasico("Processador Core i7",4500);
-    HardwareBasico hbram3 = new HardwareBasico("Memória RAM",32);
-    HardwareBasico hbhd3 = new HardwareBasico("HD",2000);
-
-    MemoriaUSB musb3 = new MemoriaUSB("HD Externo",1000);
+    // Agregação
+    private MemoriaUSB musb;
 
 
-    public Computador(String marca, float preco, HardwareBasico hbp, HardwareBasico hbram, HardwareBasico hbhd, SistemaOperacional so, MemoriaUSB musb){
-
+    public Computador(String marca, float preco, String processador, float frequencia, float cRam, float cHD, String nome, int tipo){
+        this.marca = marca;
+        this.preco = preco;
+        this.processador = new HardwareBasico(processador,frequencia);
+        this.ram = new HardwareBasico("Memória Ram",cRam);
+        this.hd = new HardwareBasico("HD",cHD);
+        this.so = new SistemaOperacional(nome, tipo);
     }
 
     public void mostraPCConfigs(){
+        System.out.println("Marca: " + marca);
+        System.out.println("Preço: R$ " + preco);
 
+        System.out.println(processador.getNome() + " (" + processador.getCapacidade() + "Mhz)");
+
+        System.out.println(ram.getCapacidade() + " Gb de " + ram.getNome());
+
+        System.out.println(hd.getCapacidade() + " Gb de " + hd.getNome());
+
+        System.out.println("Sistema Operacional " + so.getNome() + " (" + so.getTipo() + ")");
+
+        if (musb != null){
+            System.out.println("Acompanha " + musb.getNome() + " de " + musb.getCapacidade() + "Gb");
+        }
     }
 
     public void addMemoriaUSB(MemoriaUSB musb){
+        this.musb = musb;
+    }
 
+    public float getPreco() {
+        return this.preco;
     }
 }

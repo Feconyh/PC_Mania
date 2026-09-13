@@ -9,8 +9,12 @@ public class SistemaOperacional {
         this.tipo = tipo;
     }
 
-    public void getInfo(){
-        System.out.print(this.nome + " ");
-        System.out.println(this.tipo + " bits");
-    }
+    public String getNome() {
+        return this.nome;
+    };
+
+    public int getTipo() {
+        return this.tipo;
+    };
+
 }

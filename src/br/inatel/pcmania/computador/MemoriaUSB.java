@@ -9,8 +9,11 @@ public class MemoriaUSB {
         this.capacidade = capacidade;
     }
 
-    public void getInfo(){
-        System.out.print(this.nome + " ");
-        System.out.println(this.capacidade + "Gb");
-    }
+    public String getNome() {
+        return this.nome;
+    };
+
+    public int getCapacidade() {
+        return this.capacidade;
+    };
 }

@@ -8,4 +8,14 @@ public class HardwareBasico {
         this.nome = nome;
         this.capacidade = capacidade;
     }
+
+    public String getNome() {
+        return this.nome;
+    };
+
+    public float getCapacidade() {
+        return this.capacidade;
+    };
+
+
 }
